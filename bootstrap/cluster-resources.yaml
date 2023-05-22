@@ -44,6 +44,5 @@ spec:
         repoURL: https://github.com/Prcku/demo_argocd.git
       syncPolicy:
         automated:
-          allowEmpty: true
           selfHeal: true
 status: {}
