@@ -18,7 +18,7 @@ spec:
     kind: Application
   project: default
   source:
-    path: bootstrap/argo-cd
+    path: argo-cd
     repoURL: https://gitlab.com/profiprog/argocd-workshop.git
   syncPolicy:
     automated:
