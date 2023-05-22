@@ -1,0 +1,41 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: argocd
+images:
+- name: quay.io/argoproj/argocd
+  newTag: v2.7.2
+resources:
+- https://raw.githubusercontent.com/argoproj/argo-cd/v2.7.2/manifests/ha/install.yaml
+#- ingress.yaml
+
+#configMapGenerator:
+# https://raw.githubusercontent.com/argoproj-labs/argocd-vault-plugin/v1.13.0/manifests/cmp-sidecar/cmp-plugin.yaml
+#- name: cmp-plugin
+#  behavior: create
+#  options:
+#    disableNameSuffixHash: true
+#  files:
+#  - argocd-vault-plugin/avp-kustomize.yaml
+##  - argocd-vault-plugin/avp-helm.yaml
+ # - argocd-vault-plugin/avp.yaml
+#- name: argocd-cm
+#  behavior: merge
+#  literals:
+#  - timeout.reconciliation=15s
+#- name: argocd-cmd-params-cm
+#  behavior: merge
+#  literals:
+#  - server.insecure=true
+
+#secretGenerator:
+#- name: argocd-vault-plugin-credentials
+#  literals:
+#  - AVP_AUTH_TYPE=k8s
+#  - AVP_K8S_ROLE=argocd
+#  - AVP_TYPE=vault
+#  - VAULT_ADDR=http://vault.vault.svc.cluster.local:8200
+
+#patchesStrategicMerge:
+# - https://raw.githubusercontent.com/argoproj-labs/argocd-vault-plugin/v1.14.0/manifests/cmp-sidecar/argocd-repo-server.yaml
+# - argocd-vault-plugin/avp.patch.yaml
+
